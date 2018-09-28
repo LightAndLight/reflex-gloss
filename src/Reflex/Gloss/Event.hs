@@ -22,9 +22,9 @@ import qualified Graphics.Gloss.Interface.IO.Game as Gloss
 
 data GlossEvent a where
   GE_Key
-    :: Maybe (Gloss.Key)
-    -> Maybe (Gloss.KeyState)
-    -> Maybe (Gloss.Modifiers)
+    :: Maybe Gloss.Key
+    -> Maybe Gloss.KeyState
+    -> Maybe Gloss.Modifiers
     -> GlossEvent (Float, Float)
   GE_Motion :: GlossEvent (Float, Float)
   GE_Resize :: GlossEvent (Int, Int)
