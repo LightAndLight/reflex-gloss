@@ -15,14 +15,15 @@
 -------------------------------------------------------------------------------
 
 module Reflex.Gloss
-  ( playReflex
-  , InputEvent
+  ( module Reflex.Gloss.Event
+  , playReflex
   , GlossApp
   )
 where
 
 import Reflex
 import Reflex.Host.Basic
+import Reflex.Gloss.Event
 
 import Control.Concurrent (forkFinally)
 import Control.Concurrent.STM (atomically)
@@ -42,7 +43,7 @@ type InputEvent = G.Event
 type GlossApp t m
   = BasicGuestConstraints t m
   => Event t Float
-  -> Event t InputEvent
+  -> EventSelector t GlossEvent
   -> BasicGuest t m (Dynamic t Picture, Event t ())
 
 -- | Play the 'GlossApp' in a window
@@ -61,7 +62,7 @@ playReflex display color frequency network =
     (inputEvent, inputTrigger) <- newTriggerEvent
     (hostQuitEvent, hostQuitTrigger) <- newTriggerEvent
 
-    (dPicture, eQuit) <- network tickEvent inputEvent
+    (dPicture, eQuit) <- network tickEvent (fan $ glossEventMap <$> inputEvent)
 
     performEvent_ $
       liftIO . atomically . writeTVar picTVar <$>

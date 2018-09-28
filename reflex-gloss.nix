@@ -1,4 +1,4 @@
-{ mkDerivation, base, dependent-sum, gloss, mtl, reflex, reflex-basic-host, stdenv
+{ mkDerivation, base, dependent-sum, dependent-sum-template, gloss, mtl, reflex, reflex-basic-host, stdenv
 , transformers
 }:
 mkDerivation {
@@ -6,7 +6,7 @@ mkDerivation {
   version = "0.3";
   src = ./.;
   libraryHaskellDepends = [
-    base dependent-sum gloss mtl reflex reflex-basic-host transformers
+    base dependent-sum dependent-sum-template gloss mtl reflex reflex-basic-host transformers
   ];
   homepage = "https://github.com/reflex-frp/reflex-gloss";
   description = "An reflex interface for gloss";
