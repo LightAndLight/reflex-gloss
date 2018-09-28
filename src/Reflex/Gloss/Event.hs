@@ -3,6 +3,8 @@
 module Reflex.Gloss.Event
   ( GlossEvent(..)
   , Gloss.Key(..)
+  , Gloss.SpecialKey(..)
+  , Gloss.MouseButton(..)
   , Gloss.KeyState(..)
   , Gloss.Modifiers(..)
   , glossEventMap
