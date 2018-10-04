@@ -18,6 +18,8 @@ module Reflex.Gloss
   ( module Reflex.Gloss.Event
   , playReflex
   , GlossApp
+  , BasicGuestConstraints
+  , BasicGuest
   )
 where
 
